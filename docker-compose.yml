@@ -1,0 +1,47 @@
+version: '3.3'
+
+services:
+  userdb:
+    image: 'bitnami/postgresql:latest'
+    environment:
+      - POSTGRESQL_DATABASE=userdb
+      - POSTGRESQL_USERNAME=userdb
+      - POSTGRESQL_PASSWORD=userdb
+    volumes:
+      - userdb_data:/bitnami/postgresql
+    ports:
+      - '5432:5432'
+  
+  emaildb:
+    image: 'bitnami/postgresql:latest'
+    environment:
+      - POSTGRESQL_DATABASE=emaildb
+      - POSTGRESQL_USERNAME=emaildb
+      - POSTGRESQL_PASSWORD=emaildb
+    volumes:
+      - emaildb_data:/bitnami/postgresql
+    ports:
+      - '5433:5432'
+
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - redis_data:/bitnami/redis/data
+    ports:
+      - '6379:6379'
+
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+
+volumes:
+  redis_data:
+  emaildb_data:
+  userdb_data:
