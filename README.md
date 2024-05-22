@@ -34,3 +34,6 @@ Principais tecnologias utilizadas:
 <hr>
 
 ### Arquitetura:
+<p align="center">
+    <img src="https://raw.githubusercontent.com/reidn3r/nodejs-microservice/main/assets/microsservices.drawio.png" alt="Arquitetura dos Microsserviços">
+</p>
